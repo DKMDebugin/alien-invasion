@@ -4,7 +4,7 @@ class Ship():
     '''
     Ship() helps manage most of the behaviour of the player's ship
     '''
-    def __init__(self, screen):
+    def __init__(self, ai_settings, screen):
         """Initialize the ship and set its starting position."""
         self.screen = screen
         # Load the ship image and get its rect.
@@ -15,6 +15,9 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx #centerx attribute position game element at the center. center & centery are other attri that can be used
         self.rect.bottom = self.screen_rect.bottom #postion game element at the bottom
 
+        #Store a decimal value for the ships's center
+        self.center = float(self.rect.centerx)
+
         #Movement flag
         self.moving_right = False
         self.moving_left = False
@@ -23,10 +26,14 @@ class Ship():
         '''
         Update the ship's position based on the movement flag.
         '''
+        #Update the ship's center value, not the rect.
         if self.moving_right:
-            self.rect.centerx += 1
+            self.center += self.ai_settings.ship_speed_factor
         if self.moving_left:
-            self.rect.centerx -= 1
+            self.center -= self.ai_settings.ship_speed_factor
+
+        #Update rect object from self.center
+        self.rect.centerx = self.center
 
     def blitme(self):
         """Draw the ship at its current location."""

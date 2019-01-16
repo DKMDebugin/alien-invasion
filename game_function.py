@@ -4,8 +4,8 @@ import pygame
 def check_events(ship):
     """Respond to keypresses and mouse events."""
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit
+        if event.type == pygame.QUIT: #if the quit event is triggered
+            sys.exit() # exit game
 
         elif event.type == pygame.KEYDOWN: #When key is pressed
             if event.key == pygame.K_RIGHT: #if its the right arrow key
