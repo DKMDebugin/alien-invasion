@@ -14,7 +14,7 @@ class Ship():
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         # Start each new ship at the bottom center of the screen.
-        self.rect.centerx = self.screen_rect.centerx #centerx attribute position game element at the center. center & centery are other attri that can be used
+        self.rect.centerx = self.screen_rect.centerx #centerx attribute position game element at the top center. center & centery are other attri that can be used
         self.rect.bottom = self.screen_rect.bottom #postion game element at the bottom
 
         #Store a decimal value for the ships's center
