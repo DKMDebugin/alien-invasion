@@ -121,10 +121,11 @@ def update_aliens(ai_settings, aliens):
     check_fleet_edges(ai_settings, aliens)
     aliens.update()
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, background, screen, ship, aliens, bullets):
     """Update images on the screen and flip to the new screen."""
 
     screen.fill(ai_settings.bg_color) #Redraw the screen during each pass through the loop.
+    screen.blit(background.image, background.rect)
     #Redraw all bullets behind ship and aliens
     for bullet in bullets.sprites():
         bullet.blitme()
