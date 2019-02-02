@@ -185,7 +185,7 @@ def update_aliens(ai_settings, stats, screen, ship, aliens, bullets):
         ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
     check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
 
-def update_screen(ai_settings, background, screen, stats, ship, aliens, bullets,
+def update_screen(ai_settings, background, screen, stats, sb, ship, aliens, bullets,
         play_button):
     """Update images on the screen and flip to the new screen."""
     #Redraw the screen during each pass through the loop.
@@ -198,6 +198,8 @@ def update_screen(ai_settings, background, screen, stats, ship, aliens, bullets,
 
     ship.blitme() #Redraw ship at its current location
     aliens.draw(screen) #Redraw each alien in the group to the screen
+    # Draw the score information.
+    sb.show_score()
     # Draw the play button if the game is inactive.
     if not stats.game_active:
         play_button.draw_button()
