@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 8295
 =======
 8295
 >>>>>>> Scoring-System
+=======
+8295
+>>>>>>> 77441ddd9967d42f8da756fa70c5f395fcfffbbd
