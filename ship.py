@@ -1,11 +1,13 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship():
+class Ship(Sprite):
     '''
     Ship() helps manage most of the behaviour of the player's ship
     '''
     def __init__(self, ai_settings, screen):
         """Initialize the ship and set its starting position."""
+        super().__init__() #Inittialize Sprite class
         #initialize the parameters
         self.screen = screen
         self.ai_settings = ai_settings
@@ -44,3 +46,12 @@ class Ship():
     def blitme(self):
         """Draw the ship at its current location."""
         self.screen.blit(self.image, self.rect)
+
+
+class SmallShip(Sprite):
+    """Class for small ship to be used for scoring"""
+    def __init__(self):
+        '''load small ship imagae for scoreboard'''
+        super().__init__()
+        self.image = pygame.image.load('images/smallShip.bmp')
+        self.rect = self.image.get_rect()
