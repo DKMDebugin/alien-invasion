@@ -42,10 +42,7 @@ def start_game(ai_settings, screen, stats, sb, ship, aliens, bullets):
     stats.reset_stats()
     stats.game_active = True
     # Reset the scoreboard images.
-    sb.prep_score()
-    sb.prep_high_score()
-    sb.prep_level()
-    sb.prep_ships()
+    sb.prep_images()
     # Empty the list of aliens and bullets.
     aliens.empty()
     bullets.empty()
@@ -107,14 +104,17 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
 
     if len(aliens) == 0:
         # If the entire fleet is destroyed, start a new level.
-        bullets.empty()
-        ai_settings.increase_speed()
+        start_new_level(ai_settings, screen, stats, sb, ship, aliens,bullets)
 
-        # Increase level.
-        stats.level += 1
-        sb.prep_level()
+def start_new_level(ai_settings, screen, stats, sb, ship, aliens,bullets):
+    '''Starts new level'''
+    bullets.empty()
+    ai_settings.increase_speed()
+    # Increase level.
+    stats.level += 1
+    sb.prep_level()
 
-        create_fleet(ai_settings, screen, ship, aliens)
+    create_fleet(ai_settings, screen, ship, aliens)
 
 def get_number_aliens_x(ai_settings, alien_width):
     """Determine the number of aliens that fit in a row."""
@@ -214,8 +214,8 @@ def check_high_score(stats, sb):
         stats.high_score = stats.score
         sb.prep_high_score()
 
-def update_screen(ai_settings, background, screen, stats, sb, ship, aliens, bullets,
-        play_button):
+def update_screen(ai_settings, background, screen, stats, sb, ship, aliens,
+            bullets, play_button):
     """Update images on the screen and flip to the new screen."""
     #Redraw the screen during each pass through the loop.
     screen.fill(ai_settings.bg_color)
